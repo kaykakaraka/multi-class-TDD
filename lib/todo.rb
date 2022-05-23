@@ -1,18 +1,21 @@
 class Todo
   def initialize(task) # task is a string
-    # ...
+    fail "Error: string is empty" if task.empty? 
+    @task = task
+    @status = false
   end
 
   def task
-    # Returns the task as a string
+    @task
   end
 
   def mark_done!
-    # Marks the todo as done
+    @status = true
     # Returns nothing
   end
 
   def done?
+    @status
     # Returns true if the task is done
     # Otherwise, false
   end
