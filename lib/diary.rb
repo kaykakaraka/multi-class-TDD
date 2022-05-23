@@ -19,6 +19,7 @@ class Diary
       counter += entry.count_words
     end
     counter
+    # Returns total number of words in all entries
   end
 
   def reading_time(wpm) #returns in minutes how long it would take to read all entries
@@ -30,5 +31,7 @@ class Diary
     entries = @DiaryEntries
     entries.select! { |entry| entry.count_words <= words_to_read }
     entries.max_by { |entry| entry.count_words }
+    # Returns the entry closest to the length they can read in the given time
+    # that they can complete in the given time
   end
 end
