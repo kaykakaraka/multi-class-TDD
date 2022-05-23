@@ -73,7 +73,6 @@ RSpec.describe "integration" do
   context "both diary entries could be read by the user in time" do
     it "selects the diary entry that is closest to the length they can read" do
       diary = Diary.new
-      diary = Diary.new
       entry_1 = DiaryEntry.new("Thursday", "contents " * 900)
       entry_2 = DiaryEntry.new("Friday", "contents " * 800)
       diary.add(entry_1)
@@ -82,7 +81,6 @@ RSpec.describe "integration" do
     end
 
     it "selects a different diary entry that is closest to the length they can read" do
-      diary = Diary.new
       diary = Diary.new
       entry_1 = DiaryEntry.new("Thursday", "contents " * 50)
       entry_2 = DiaryEntry.new("Friday", "contents " * 800)
@@ -95,12 +93,35 @@ RSpec.describe "integration" do
   context "one diary entry is too long for the user to read" do
     it "returns the entry the user has time to read" do
       diary = Diary.new
-      diary = Diary.new
       entry_1 = DiaryEntry.new("Thursday", "I walked the dog")
       entry_2 = DiaryEntry.new("Friday", "I was walking the dog very happily today")
       diary.add(entry_1)
       diary.add(entry_2)
       expect(diary.find_best_entry_for_reading_time(4, 1)).to eq entry_1
+    end
+  end
+
+  context "three entries are added" do
+    it "returns the best entry for reading time" do
+      diary = Diary.new
+      entry_1 = DiaryEntry.new("Thursday", "I walked the dog")
+      entry_2 = DiaryEntry.new("Friday", "I was walking the dog very happily today")
+      entry_3 = DiaryEntry.new("Saturday", "walking " * 300)
+      diary.add(entry_1)
+      diary.add(entry_2)
+      diary.add(entry_3)
+      expect(diary.find_best_entry_for_reading_time(50, 4)).to eq entry_2
+    end
+  end
+
+  context "diary entry is created but not added" do
+    it "doesn't show the entry" do
+      diary = Diary.new
+      entry_1 = DiaryEntry.new("Thursday", "how nice!")
+      expect(diary.all).to eq []
+      expect(diary.count_words).to eq 0
+      expect(diary.reading_time(50)).to eq 0
+      expect(diary.find_best_entry_for_reading_time(5,20)).to eq nil
     end
   end
 end

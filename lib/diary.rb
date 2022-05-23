@@ -21,7 +21,7 @@ class Diary
     counter
   end
 
-  def reading_time(wpm) 
+  def reading_time(wpm) #returns in minutes how long it would take to read all entries
     count_words / wpm                 
   end
 
