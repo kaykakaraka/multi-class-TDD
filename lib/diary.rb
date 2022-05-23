@@ -15,6 +15,7 @@ class Diary
 
   def count_words
     counter = 0
+    return counter if @DiaryEntries.empty?
     @DiaryEntries.each do |entry|
       counter += entry.count_words
     end
