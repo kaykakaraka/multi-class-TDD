@@ -10,6 +10,7 @@ RSpec.describe Todo do
   it "shows an incomplete task as false" do
     task_1 = Todo.new("Hang out the washing")
     expect(task_1.done?).to eq false
+    expect(task_1.task).to eq "Hang out the washing"
   end
 
   it "shows a complete task as true" do
