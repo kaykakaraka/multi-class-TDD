@@ -16,3 +16,16 @@ diary.add(entry_1)
 diary.add(entry_2)
 diary.all # => [entry_1, entry_2]
 
+# 4 
+diary = Diary.new
+entry_1 = DiaryEntry.new("Tuesday", "I walked the dog")
+entry_1.count_words
+diary.add(entry_1)
+diary.count_words # => 4
+
+# 5
+diary = Diary.new
+entry_1 = DiaryEntry.new("Tuesday", "I walked the dog happily down the road")
+entry_1.count_words
+diary.add(entry_1)
+diary.count_words # => 8
