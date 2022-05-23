@@ -14,9 +14,9 @@ todo_list.complete # => ["Hang out the washing"]
 # 3 - shows the incomplete list as empty when the tasks have been completed
 todo_list = TodoList.new
 task_1 = Todo.new("Hang out the washing")
-todo.list.add(task_1)
+todo-list.add(task_1)
 task_1.mark_done!
-todo_list.complete # => []
+todo_list.incomplete # => []
 
 # 4 - shows multiple incomplete tasks on the todo list
 todo_list = TodoList.new
