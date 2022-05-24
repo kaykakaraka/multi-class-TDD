@@ -14,12 +14,7 @@ class Diary
   end
 
   def count_words
-    counter = 0
-    return counter if @DiaryEntries.empty?
-    @DiaryEntries.each do |entry|
-      counter += entry.count_words
-    end
-    counter
+    @DiaryEntries.sum(&:count_words)
     # Returns total number of words in all entries
   end
 
